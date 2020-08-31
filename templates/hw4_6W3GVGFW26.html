@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Covid Anchor</title>
+      <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #444;
+}
+
+nav {
+  height: 60px;
+  width: 100%;
+  box-shadow: 0 1px 7px 0.2px;
+  line-height: 60px;
+  padding: 0 100px;
+  background: #ddd;
+}
+
+.logo {
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.world {
+  margin: 30px auto;
+  color: #ddd;
+  width: 48%;
+  padding: 10px;
+}
+
+.world tr {
+  display: block;
+  width: 100%;
+}
+
+p {
+  font-size: 20px;
+  margin: 15px 0;
+}
+
+p > span {
+  float: right;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background:skyblue;
+  padding: 10px;
+  min-width: 250px;
+  min-height: 200px;
+  padding: 10px;
+}
+
+.btn {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #aaa;
+  padding: 7px 15px;
+  margin: 10px 0;
+  background: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background: #aaa;
+  color: #fff;
+}
+
+      </style>
+  </head>
+  <body>
+    <nav>
+      <a href="#" class="logo">Covid Tracker</a>
+    </nav>
+    <div class="container">
+      <div class="world">
+        <h1>World</h1>
+        <hr />
+        <p><strong>Cases: </strong> <span>{{countries[0].cases}}</span></p>
+        <p>
+          <strong>Recoveries: </strong> <span>{{countries[0].recovered}}</span>
+        </p>
+        <p><strong>Death: </strong> <span>{{countries[0].deaths}}</span></p>
+      </div>
+      <div class="cards">
+        {% for country in countries[1:] %}
+        <div class="card">
+          <h2>{{country.country}}</h2>
+          <hr />
+          <p><strong>Cases: </strong> <span>{{ country.cases}}</span></p>
+          <p>
+            <strong>Recoveries: </strong> <span>{{ country.recovered}}</span>
+          </p>
+          <p><strong>Death: </strong> <span>{{ country.deaths }}</span></p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
